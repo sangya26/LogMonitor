@@ -25,7 +25,7 @@ Java 17 or later
 
 ## Getting Started
 Clone the repository:
-git clone [https://github.com/your-username/log-monitor.git](https://github.com/sangya26/LogMonitor)
+git clone https://github.com/sangya26/LogMonitor
 cd LogMonitor
 Place your log file (logs.log) in the project root.
 Compile the Java files:
