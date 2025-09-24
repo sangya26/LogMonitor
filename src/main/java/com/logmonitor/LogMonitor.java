@@ -2,9 +2,9 @@ package com.logmonitor;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Main class that orchestrates log parsing, job tracking, and report exporting.
- */
+
+//this class performs log parsing, job tracking, and report exporting.
+
 public class LogMonitor {
     public static void main(String[] args) throws IOException{
         String logFile = args.length > 0 ? args[0] : "logs.log";

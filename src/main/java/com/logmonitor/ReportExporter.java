@@ -4,9 +4,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Exports job reports in plain text and CSV formats
- */
+
+//Exports job reports in plain text and CSV formats
+
 public class ReportExporter {
 
     /**

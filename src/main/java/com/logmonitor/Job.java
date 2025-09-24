@@ -3,8 +3,8 @@ import java.time.Duration;
 import java.time.LocalTime;
 
 /**
- * Represents a job/task with PID, description, start/end times, duration, and status.
- * Handles duration calculation including overnight jobs and status thresholds.
+ * It shows job with PID, description, start and end times, duration, and status.
+ * It handles duration calculation and status thresholds.
  */
 public class Job {
     private String pid;

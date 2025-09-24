@@ -6,9 +6,9 @@ import java.nio.file.Paths;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Parses a CSV-style log file and feeds START/END events to JobTracker.
- */
+
+//Parses a log file and feeds START and END events to JobTracker.
+
 public class LogParser {
     private String filePath;
     private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");

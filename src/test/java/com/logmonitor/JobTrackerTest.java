@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
-/**
- * Unit tests for Job, JobTracker, and ReportExporter.
- */
+
+//Unit tests for Job, JobTracker, and ReportExporter.
+
 public class JobTrackerTest {
 
     @Test

@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Tracks active jobs and completes them when END events are encountered.
- */
+
+//Tracks active jobs and completes them when END events are encountered.
+ 
 public class JobTracker {
     private Map<String, Job> activeJobs = new HashMap<>();
     private List<Job> completedJobs = new ArrayList<>();
@@ -33,7 +33,7 @@ public class JobTracker {
             job.complete(endTime);
             completedJobs.add(job);
         } else {
-            System.out.println("⚠️ END found without START for PID: " + pid);
+            System.out.println("END found without START for PID: " + pid);
         }
     }
 
