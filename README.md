@@ -1,5 +1,5 @@
 
-### Log Monitoring Application
+# Log Monitoring Application
 A robust and modular Java application for monitoring and analyzing job logs. It parses log files, tracks job durations, evaluates processing time against thresholds, and generates reports in multiple formats for monitoring and integration purposes.
 
 ## Features
@@ -38,20 +38,25 @@ The application generates reports in the project root:
 report.log → plain text summary
 report.csv → CSV format for integration
 
-Each report includes:
-PID
-Job description
-Start time
-End time
-Duration (seconds)
-Status (OK, WARNING, ERROR)
-Log File Format
-HH:MM:SS,job description,START|END,PID
+## Each report includes:
+- PID
+- Job description
+- Start time
+- End time
+- Duration (seconds)
+- Status (OK, WARNING, ERROR)
+- Log File Format
+- HH:MM:SS,job description,START|END,PID
 
-Example:
+# Example:
+``` 
 11:35:23,scheduled task 032,START,37980
-11:35:56,scheduled task 032,END,37980
-Project Structure
+11:35:56,scheduled task 032,END,37980 
+```
+
+## Project Structure
+---------------------
+```
 log-monitor/
  ├─ Job.java
  ├─ JobTracker.java
@@ -61,10 +66,7 @@ log-monitor/
  ├─ logs.log
  ├─ report.log
  ├─ report.csv
- ├─ report.json
+ ├─ JobTrackerTest.java
  └─ README.md
- 
-Extensibility
-Thresholds and file paths can be made configurable via CLI arguments.
-Additional report formats (XML, Excel) can be integrated.
-Unit tests with JUnit can be added to validate parsing, status computation, and overnight jobs.
+```
+
