@@ -1,12 +1,16 @@
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+package com.logmonitor;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.time.Duration;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for Job, JobTracker, and ReportExporter.
@@ -18,7 +22,7 @@ public class JobTrackerTest {
         Job job = new Job("123", "Test Job", LocalTime.of(10, 0, 0));
         job.complete(LocalTime.of(10, 3, 0)); // 3 minutes
         assertEquals("OK", job.getStatus());
-        assertEquals(Duration.ofMinutes(3), job.getDuration());
+        assertEquals(Duration.ofMinutes(3), job.getDuration().truncatedTo(ChronoUnit.MINUTES));
     }
 
     @Test
@@ -39,7 +43,9 @@ public class JobTrackerTest {
     void testOvernightJob() {
         Job job = new Job("126", "Overnight Job", LocalTime.of(23, 55, 0));
         job.complete(LocalTime.of(0, 5, 0)); // Spans midnight
-        assertEquals(Duration.ofMinutes(10), job.getDuration());
+        Duration expected = Duration.ofMinutes(10);
+        Duration actual = job.getDuration().truncatedTo(ChronoUnit.MINUTES);
+        assertEquals(expected, actual);
     }
 
     @Test

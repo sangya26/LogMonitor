@@ -1,3 +1,4 @@
+package com.logmonitor;
 import java.io.IOException;
 import java.util.List;
 
@@ -5,7 +6,7 @@ import java.util.List;
  * Main class that orchestrates log parsing, job tracking, and report exporting.
  */
 public class LogMonitor {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         String logFile = args.length > 0 ? args[0] : "logs.log";
         String textReport = "report.log";
         String csvReport = "report.csv";
@@ -25,7 +26,7 @@ public class LogMonitor {
         try {
             ReportExporter.exportText(completedJobs, textReport);
             ReportExporter.exportCSV(completedJobs, csvReport);
-            System.out.println("✅ Reports generated successfully.");
+            System.out.println(" Reports generated successfully.");
         } catch (IOException e) {
             e.printStackTrace();
         }

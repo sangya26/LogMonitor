@@ -3,70 +3,74 @@
 A robust and modular Java application for monitoring and analyzing job logs. It parses log files, tracks job durations, evaluates processing time against thresholds, and generates reports in multiple formats for monitoring and integration purposes.
 
 ## Features
-- Log Parsing: Reads log files with timestamps, job descriptions, event types (START/END), and PIDs.
-- Job Tracking: Measures job duration and handles jobs spanning midnight.
-- Status Evaluation: Automatically classifies job status based on thresholds:
-    - OK – completed within 5 minutes
-    - WARNING – duration exceeds 5 minutes
-    - ERROR – duration exceeds 10 minutes
-- Multiple Report Formats: Exports reports in:
-    - Plain text (report.log)
-    - CSV (report.csv) for integration with other systems
-- Modular Design: Separate classes for better readability, maintainability, and testability:
-    - Job.java – represents both active and completed jobs
-    - JobTracker.java – manages active jobs and completes them
-    - LogParser.java – parses logs and returns completed jobs
-    - ReportExporter.java – handles exporting to text, CSV, and JSON
-    - LogMonitor.java – main application orchestrator
+
+- Parse log files and extract job events.
+- Track active jobs and compute execution duration.
+- Handle overnight jobs (spanning across midnight).
+- Assign job status:
+    -  OK → Duration ≤ 5 minutes
+    -  WARNING → 6–10 minutes
+    -  ERROR → >10 minutes
+- Export reports to:
+    - Text (.log)
+    - CSV (.csv)
+- Unit tests with JUnit 5
 
 
 ## Prerequisites
-Java 17 or later
+- Java 11+
+- Maven 3.6+
 
 ## Getting Started
-Clone the repository:
-git clone https://github.com/sangya26/LogMonitor
-cd LogMonitor
-Place your log file (logs.log) in the project root.
-Compile the Java files:
-javac *.java
-Run the application:
-java LogMonitor
 
-## Output
-The application generates reports in the project root:
-report.log → plain text summary
-report.csv → CSV format for integration
+- Clone the repository:
+- git clone https://github.com/sangya26/LogMonitor
+- cd LogMonitor
+- Place your log file (logs.log) in the project root
+- Build the project
+- mvn clean install
+- Run the application
+- mvn compile exec:java 
+- Run tests
+- mvn test
 
-## Each report includes:
-- PID
-- Job description
-- Start time
-- End time
-- Duration (seconds)
-- Status (OK, WARNING, ERROR)
-- Log File Format
-- HH:MM:SS,job description,START|END,PID
 
-# Example:
-``` 
-11:35:23,scheduled task 032,START,37980
-11:35:56,scheduled task 032,END,37980 
+
+## Example
+- Input log file (logs.log):
 ```
+11:36:58,background job wmy, START,81258
+11:37:14,scheduled task 515, START,45135
+```
+- Generated report (report.log):
+```
+90962 | scheduled task 996 | Start: 11:40:51 | End: 11:42:46 | Duration: 1m 55s | Status: OK
+90812 | background job dej | Start: 11:39:26 | End: 11:43:32 | Duration: 4m 6s | Status: OK
+```
+- Generated report (report.csv):
+```
+75164,scheduled task 173,11:45:47,11:46:51,1m 4s,OK
+36709,background job djw,11:47:04,11:47:54,0m 50s,OK
+```
+
 
 ## Project Structure
 ---------------------
 ```
 log-monitor/
- ├─ Job.java
- ├─ JobTracker.java
- ├─ LogParser.java
- ├─ ReportExporter.java
- ├─ LogMonitor.java
+ ├─ src/
+ │   ├─ main/java/com/logmonitor/
+ │   │   ├─ Job.java
+ │   │   ├─ JobTracker.java
+ │   │   ├─ LogParser.java
+ │   │   ├─ ReportExporter.java
+ │   │   └─ LogMonitor.java   # Entry point
+ │   └─ test/java/com/logmonitor/
+ │       └─ JobTrackerTest.java
+ ├─ pom.xml
  ├─ logs.log
  ├─ report.log
  ├─ report.csv
- ├─ JobTrackerTest.java
  └─ README.md
 ```
 
