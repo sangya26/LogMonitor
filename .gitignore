@@ -2,7 +2,5 @@
 *.class
 
 # Ignore build folders
-bin/
-out/
 target/
 
