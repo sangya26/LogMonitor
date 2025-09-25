@@ -53,6 +53,8 @@ A robust and modular Java application for monitoring and analyzing job logs. It 
 36709,background job djw,11:47:04,11:47:54,0m 50s,OK
 ```
 
+![App Screenshot](images/Screenshot%202025-09-25%20at%2011.28.44.png)
+
 
 ## Project Structure
 ---------------------
